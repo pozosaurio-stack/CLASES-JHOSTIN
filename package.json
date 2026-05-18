@@ -1,0 +1,36 @@
+{
+  "name": "prisma-multiple-schemas",
+  "version": "1.0.0",
+  "description": "Prisma ORM with Multiple Schemas - No Microservices",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prisma:migrate:create": "npx prisma migrate dev --schema=./prisma/users/schema.prisma && npx prisma migrate dev --schema=./prisma/subscriptions/schema.prisma && npx prisma migrate dev --schema=./prisma/music/schema.prisma && npx prisma migrate dev --schema=./prisma/likes/schema.prisma && npx prisma migrate dev --schema=./prisma/matches/schema.prisma && npx prisma migrate dev --schema=./prisma/chat/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema=./prisma/users/schema.prisma && npx prisma generate --schema=./prisma/subscriptions/schema.prisma && npx prisma generate --schema=./prisma/music/schema.prisma && npx prisma generate --schema=./prisma/likes/schema.prisma && npx prisma generate --schema=./prisma/matches/schema.prisma && npx prisma generate --schema=./prisma/chat/schema.prisma",
+    "prisma:migrate:deploy": "npx prisma migrate deploy --schema=./prisma/users/schema.prisma && npx prisma migrate deploy --schema=./prisma/subscriptions/schema.prisma && npx prisma migrate deploy --schema=./prisma/music/schema.prisma && npx prisma migrate deploy --schema=./prisma/likes/schema.prisma && npx prisma migrate deploy --schema=./prisma/matches/schema.prisma && npx prisma migrate deploy --schema=./prisma/chat/schema.prisma",
+    "prisma:studio": "npx prisma studio --schema=./prisma/users/schema.prisma",
+    "prisma:reset": "npx prisma migrate reset --schema=./prisma/users/schema.prisma --force && npx prisma migrate reset --schema=./prisma/subscriptions/schema.prisma --force && npx prisma migrate reset --schema=./prisma/music/schema.prisma --force && npx prisma migrate reset --schema=./prisma/likes/schema.prisma --force && npx prisma migrate reset --schema=./prisma/matches/schema.prisma --force && npx prisma migrate reset --schema=./prisma/chat/schema.prisma --force",
+    "migrate:users": "npx prisma migrate dev --schema=./prisma/users/schema.prisma --name",
+    "migrate:subscriptions": "npx prisma migrate dev --schema=./prisma/subscriptions/schema.prisma --name",
+    "migrate:music": "npx prisma migrate dev --schema=./prisma/music/schema.prisma --name",
+    "migrate:likes": "npx prisma migrate dev --schema=./prisma/likes/schema.prisma --name",
+    "migrate:matches": "npx prisma migrate dev --schema=./prisma/matches/schema.prisma --name",
+    "migrate:chat": "npx prisma migrate dev --schema=./prisma/chat/schema.prisma --name"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.7.1",
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.6",
+    "@types/uuid": "^9.0.7",
+    "prisma": "^5.7.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

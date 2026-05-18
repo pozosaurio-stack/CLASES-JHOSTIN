@@ -1,0 +1,554 @@
+{
+  "info": {
+    "_postman_id": "prisma-multiple-schemas-collection",
+    "name": "Prisma Multiple Schemas",
+    "description": "Colección completa de endpoints para Prisma con múltiples schemas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "USERS",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan García\",\n  \"email\": \"juan@example.com\",\n  \"passwordHash\": \"hashed_password_123\",\n  \"birthDate\": \"1995-05-15\",\n  \"gender\": \"Male\",\n  \"bio\": \"Amante de la música y viajes\",\n  \"city\": \"Madrid\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/users/550e8400-e29b-41d4-a716-446655440000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users", "550e8400-e29b-41d4-a716-446655440000"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bio\": \"Nuevo bio actualizado\",\n  \"city\": \"Barcelona\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/550e8400-e29b-41d4-a716-446655440000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users", "550e8400-e29b-41d4-a716-446655440000"]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:3000/api/users/550e8400-e29b-41d4-a716-446655440000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users", "550e8400-e29b-41d4-a716-446655440000"]
+            }
+          }
+        },
+        {
+          "name": "Add User Photo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"photoUrl\": \"https://example.com/photo1.jpg\",\n  \"photoOrder\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/users/photos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users", "photos"]
+            }
+          }
+        },
+        {
+          "name": "Get User Photos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/users/550e8400-e29b-41d4-a716-446655440000/photos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "users", "550e8400-e29b-41d4-a716-446655440000", "photos"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SUBSCRIPTIONS",
+      "item": [
+        {
+          "name": "Create Subscription User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"María López\",\n  \"email\": \"maria@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/subscriptions/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "subscriptions", "users"]
+            }
+          }
+        },
+        {
+          "name": "Create Subscription Plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Premium\",\n  \"price\": 9.99,\n  \"durationDays\": 30\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/subscriptions/plans",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "subscriptions", "plans"]
+            }
+          }
+        },
+        {
+          "name": "Subscribe User to Plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"planId\": \"660e8400-e29b-41d4-a716-446655440001\",\n  \"startDate\": \"2024-01-15T00:00:00Z\",\n  \"endDate\": \"2024-02-15T00:00:00Z\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/subscriptions",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "subscriptions"]
+            }
+          }
+        },
+        {
+          "name": "Get User Subscriptions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/subscriptions/550e8400-e29b-41d4-a716-446655440000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "subscriptions", "550e8400-e29b-41d4-a716-446655440000"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "MUSIC",
+      "item": [
+        {
+          "name": "Create Music User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Carlos Ruiz\",\n  \"email\": \"carlos@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/music/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "music", "users"]
+            }
+          }
+        },
+        {
+          "name": "Create Music Track",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Bohemian Rhapsody\",\n  \"artist\": \"Queen\",\n  \"spotifyUrl\": \"https://open.spotify.com/track/3z8h0TU7RvxVA6iaWK0NOT\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/music/tracks",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "music", "tracks"]
+            }
+          }
+        },
+        {
+          "name": "Get All Tracks",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/music/tracks",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "music", "tracks"]
+            }
+          }
+        },
+        {
+          "name": "Add Track to User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"trackId\": \"770e8400-e29b-41d4-a716-446655440002\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/music/user-tracks",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "music", "user-tracks"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "LIKES",
+      "item": [
+        {
+          "name": "Create Likes User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pedro García\",\n  \"email\": \"pedro@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/likes/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "likes", "users"]
+            }
+          }
+        },
+        {
+          "name": "Create Like",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderUserId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"receiverUserId\": \"880e8400-e29b-41d4-a716-446655440003\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/likes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "likes"]
+            }
+          }
+        },
+        {
+          "name": "Get Likes Sent by User",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/likes/sent/550e8400-e29b-41d4-a716-446655440000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "likes", "sent", "550e8400-e29b-41d4-a716-446655440000"]
+            }
+          }
+        },
+        {
+          "name": "Get Likes Received by User",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/likes/received/880e8400-e29b-41d4-a716-446655440003",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "likes", "received", "880e8400-e29b-41d4-a716-446655440003"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "MATCHES",
+      "item": [
+        {
+          "name": "Create Matches User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ana Martínez\",\n  \"email\": \"ana@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/matches/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "matches", "users"]
+            }
+          }
+        },
+        {
+          "name": "Create Match",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user1Id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"user2Id\": \"880e8400-e29b-41d4-a716-446655440003\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/matches",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "matches"]
+            }
+          }
+        },
+        {
+          "name": "Get User Matches",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/matches/user/550e8400-e29b-41d4-a716-446655440000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "matches", "user", "550e8400-e29b-41d4-a716-446655440000"]
+            }
+          }
+        },
+        {
+          "name": "Get Active Matches",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/matches/user/550e8400-e29b-41d4-a716-446655440000/active",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "matches", "user", "550e8400-e29b-41d4-a716-446655440000", "active"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "CHAT",
+      "item": [
+        {
+          "name": "Create Match Chat",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user1Id\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"user2Id\": \"880e8400-e29b-41d4-a716-446655440003\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/chat/matches",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "chat", "matches"]
+            }
+          }
+        },
+        {
+          "name": "Send Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matchId\": \"bb0e8400-e29b-41d4-a716-446655440006\",\n  \"senderUserId\": \"550e8400-e29b-41d4-a716-446655440000\",\n  \"message\": \"¡Hola! ¿Cómo estás?\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/chat/messages",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "chat", "messages"]
+            }
+          }
+        },
+        {
+          "name": "Get Match Messages",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/chat/messages/bb0e8400-e29b-41d4-a716-446655440006",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "chat", "messages", "bb0e8400-e29b-41d4-a716-446655440006"]
+            }
+          }
+        },
+        {
+          "name": "Get User Chats",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3000/api/chat/user/550e8400-e29b-41d4-a716-446655440000",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "chat", "user", "550e8400-e29b-41d4-a716-446655440000"]
+            }
+          }
+        },
+        {
+          "name": "Mark Message as Read",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:3000/api/chat/messages/cc0e8400-e29b-41d4-a716-446655440007/read",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "chat", "messages", "cc0e8400-e29b-41d4-a716-446655440007", "read"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
