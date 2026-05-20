@@ -33,12 +33,12 @@ Escribe: `init`
 
 Esto creará:
 ```
-prisma/users/migrations/20240115120000_init/migration.sql
-prisma/subscriptions/migrations/20240115120000_init/migration.sql
-prisma/music/migrations/20240115120000_init/migration.sql
-prisma/likes/migrations/20240115120000_init/migration.sql
-prisma/matches/migrations/20240115120000_init/migration.sql
-prisma/chat/migrations/20240115120000_init/migration.sql
+prisma/users/migrations/migration_1/migration.sql
+prisma/subscriptions/migrations/migration_1/migration.sql
+prisma/music/migrations/migration_1/migration.sql
+prisma/likes/migrations/migration_1/migration.sql
+prisma/matches/migrations/migration_1/migration.sql
+prisma/chat/migrations/migration_1/migration.sql
 ```
 
 ### 2. Hacer cambios al schema
@@ -65,7 +65,7 @@ npm run migrate:users "agregar_website"
 
 Esto creará:
 ```
-prisma/users/migrations/20240115120500_agregar_website/migration.sql
+prisma/users/migrations/migration_2/migration.sql
 ```
 
 ### 4. Generar Prisma Client
@@ -268,9 +268,9 @@ prisma/
 │   ├── schema.prisma
 │   └── migrations/
 │       ├── migration_lock.toml
-│       └── 20240115120000_init/
+│       └── migration_1/
 │           └── migration.sql
-│       └── 20240115120500_agregar_website/
+│       └── migration_2/
 │           └── migration.sql
 ├── subscriptions/
 │   ├── schema.prisma
@@ -293,7 +293,7 @@ prisma/
 npm run prisma:reset
 
 # Opción 2: Resolver conflicto manualmente
-npm run prisma:migrate:resolve -- --rolled-back 20240115120000_init
+npm run prisma:migrate:resolve -- --rolled-back migration_1
 ```
 
 ### Error: "Schema validation error"
